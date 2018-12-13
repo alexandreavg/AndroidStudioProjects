@@ -130,6 +130,7 @@ public class LoginActivity extends Activity {
         return permissoes;
     }
 
+    //Teste do nvl do SDK, menor que 23 nao precisa de validação.
     private void onRequestPermissionResult(int requestCode, String[] permissions, int[] grantResults){
 
         if(Build.VERSION.SDK_INT >= 23 ){
