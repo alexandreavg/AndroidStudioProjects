@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "419894268507",
+    "firebase_url": "https://autenticacaousuario-f61d2.firebaseio.com",
+    "project_id": "autenticacaousuario-f61d2",
+    "storage_bucket": "autenticacaousuario-f61d2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:419894268507:android:68cee8403718b656",
+        "android_client_info": {
+          "package_name": "com.cursoandroid.autenticacaousuario"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "419894268507-6lkieatr9d7bl6r3rqv1vkpr1equ4qoe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cursoandroid.autenticacaousuario",
+            "certificate_hash": "aca4f5ac6290c7e5e01859ac8cf3a0f578125ab6"
+          }
+        },
+        {
+          "client_id": "419894268507-9nkbdle586ierrhtn1t28bjb35ums3r8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7rIj6mPRSxvbdQdfyD2AJTH92aMZDA20"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "419894268507-9nkbdle586ierrhtn1t28bjb35ums3r8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

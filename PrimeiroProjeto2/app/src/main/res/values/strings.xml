@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Projeto Android</string>
+    <string name="olaMundo">Olá mundo!</string>
+    <string name="btnSalvar">Cancelar</string>
+</resources>
