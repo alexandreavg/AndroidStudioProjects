@@ -16,6 +16,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.database.DatabaseReference;
 
 public class CadastroUsuarioActivity extends AppCompatActivity {
@@ -65,7 +68,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
 
     }
 
-    private void cadastrarUsuario(Usuario usuario) throws Exception{
+    private void cadastrarUsuario(final Usuario usuario) throws Exception{
         firebaseAuth = ConfiguracaoFirebase.getFirebaseAuth();
         firebaseAuth.createUserWithEmailAndPassword(usuario.getEmail(), usuario.getSenha()
         ).addOnCompleteListener(CadastroUsuarioActivity.this, new OnCompleteListener<AuthResult>() {
@@ -73,8 +76,33 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(getApplicationContext(),"Usuario cadastrado com sucesso.", Toast.LENGTH_SHORT).show();
+                    usuario.setId(task.getResult().getUser().getUid());
+                    usuario.salvar();
+                    firebaseAuth.signOut();
+                    finish();
                 } else {
+
                     Toast.makeText(getApplicationContext(),"Ocorreu um erro no cadastro.", Toast.LENGTH_SHORT).show();
+
+                    try {
+                        throw task.getException();
+
+                    } catch (FirebaseAuthWeakPasswordException e){
+                        Toast.makeText(getApplicationContext(),"Senha muito fraca!", Toast.LENGTH_SHORT).show();
+                        e.printStackTrace();
+                    } catch (FirebaseAuthInvalidCredentialsException e){
+                        Toast.makeText(getApplicationContext(),"Email invalido!", Toast.LENGTH_SHORT).show();
+                        e.printStackTrace();
+
+                    } catch (FirebaseAuthUserCollisionException e) {
+                        Toast.makeText(getApplicationContext(),"Email ja utilizado!", Toast.LENGTH_SHORT).show();
+                        e.printStackTrace();
+
+                    } catch (Exception e){
+                        Toast.makeText(getApplicationContext(),"Erro ao gerar o cadastro!", Toast.LENGTH_SHORT).show();
+                        e.printStackTrace();
+                    }
+
                 }
             }
         });
